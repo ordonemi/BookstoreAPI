@@ -5,11 +5,13 @@
       "description": "An API for managing an online bookstore.",
       "version": "1.0.0"
     },
-    "servers": [
-      {
-        "url": "http://localhost:8080/"
-      }
-    ],
+    "host": [
+        "bookstoreapi-k7g3.onrender.com"
+      ],
+      "basePath": "/",
+      "schemes": [
+        "https"
+      ],
     "paths": {
       "/books": {
         "get": {
