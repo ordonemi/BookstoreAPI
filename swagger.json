@@ -1,0 +1,252 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "BookstoreAPI",
+      "description": "An API for managing an online bookstore.",
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:8080/"
+      }
+    ],
+    "paths": {
+      "/books": {
+        "get": {
+          "summary": "Returns all the books in the collection",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/inline_response_200"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Adds a new book to the collection",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/books_body"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/books/{bookId}": {
+        "get": {
+          "summary": "Returns a book by ID",
+          "parameters": [
+            {
+              "name": "bookId",
+              "in": "path",
+              "description": "The ID of the book to return",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/inline_response_200"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "summary": "Updates an existing book by ID",
+          "parameters": [
+            {
+              "name": "bookId",
+              "in": "path",
+              "description": "The ID of the book to update",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/books_bookId_body"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response"
+            },
+            "404": {
+              "description": "Book not found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Deletes a book by ID",
+          "parameters": [
+            {
+              "name": "bookId",
+              "in": "path",
+              "description": "The ID of the book to delete",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response"
+            },
+            "404": {
+              "description": "Book not found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "inline_response_200": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "author": {
+              "type": "string"
+            },
+            "genre": {
+              "type": "string"
+            },
+            "price": {
+              "type": "number",
+              "format": "float"
+            },
+            "ISBN": {
+              "type": "string"
+            },
+            "publicationDate": {
+              "type": "string",
+              "format": "date"
+            },
+            "stock": {
+              "type": "integer"
+            }
+          }
+        },
+        "books_body": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "example": "Sample Book Title"
+            },
+            "author": {
+              "type": "string",
+              "example": "John Doe"
+            },
+            "genre": {
+              "type": "string",
+              "example": "Fiction"
+            },
+            "price": {
+              "type": "number",
+              "format": "float",
+              "example": 10.99
+            },
+            "ISBN": {
+              "type": "string",
+              "example": "0000000000"
+            },
+            "publicationDate": {
+              "type": "string",
+              "format": "date",
+              "example": "2023-01-01"
+            },
+            "stock": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        },
+        "books_bookId_body": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "example": "Updated Book Title"
+            },
+            "author": {
+              "type": "string",
+              "example": "Jane Doe"
+            },
+            "genre": {
+              "type": "string",
+              "example": "Non-Fiction"
+            },
+            "price": {
+              "type": "number",
+              "format": "float",
+              "example": 12.99
+            },
+            "ISBN": {
+              "type": "string",
+              "example": "1111111111"
+            },
+            "publicationDate": {
+              "type": "string",
+              "format": "date",
+              "example": "2024-01-01"
+            },
+            "stock": {
+              "type": "integer",
+              "example": 5
+            }
+          }
+        }
+      }
+    }
+  }
