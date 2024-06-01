@@ -15,15 +15,24 @@ const getAll = async (req, res, next) => {
 
 const addBook = async (req, res) => {
     try {
+        const { title, author, genre, price, ISBN, publicationDate, stock } = req.body;
+
+        // Check if any field is missing
+        if (!title || !author || !genre || !price || !ISBN || !publicationDate || stock == null) {
+            res.status(400).json({ error: 'Please enter values for every field.' });
+            return;
+        }
+
         const book = {
-            title: req.body.title,
-            author: req.body.author,
-            genre: req.body.genre,
-            price: req.body.price,
-            ISBN: req.body.ISBN,
-            publicationDate: req.body.publicationDate,
-            stock: req.body.stock
+            title,
+            author,
+            genre,
+            price,
+            ISBN,
+            publicationDate,
+            stock
         };
+
         const result = await mongodb.getDb().db('bookstore').collection('books').insertOne(book);
         if (result.acknowledged) {
             res.status(201).json(result);
