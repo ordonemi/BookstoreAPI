@@ -16,7 +16,7 @@ const getAll = async (req, res) => {
 
 const addUser = async (req, res) => {
     try {
-        if (!req.body.email || !req.body.password) {
+        if (!req.body.email || !req.body.password || !req.body.firstName || !req.body.lastName || !req.body.booksPurchased) {
             res.status(400).send({ message: 'Content can not be empty' });
             return;
         }
@@ -67,7 +67,7 @@ const updateUser = async (req, res) => {
     try {
         const userId = new ObjectId(req.params.id);
 
-        if (!req.body.email || !req.body.password) {
+        if (!req.body.email || !req.body.password || !req.body.firstName || !req.body.lastName || !req.body.booksPurchased) {
             res.status(400).send({ message: 'Content can not be empty' });
             return;
         }
