@@ -64,10 +64,7 @@
             "description": "The ID of the book to return",
             "required": true,
             "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "integer"
-            }
+            "explode": false
           }
         ],
         "responses": {
@@ -92,10 +89,7 @@
             "description": "The ID of the book to update",
             "required": true,
             "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "integer"
-            }
+            "explode": false
           }
         ],
         "requestBody": {
@@ -129,10 +123,7 @@
             "description": "The ID of the book to delete",
             "required": true,
             "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "integer"
-            }
+            "explode": false
           }
         ],
         "responses": {
@@ -199,10 +190,7 @@
             "description": "The ID of the user to return",
             "required": true,
             "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "integer"
-            }
+            "explode": false
           }
         ],
         "responses": {
@@ -230,10 +218,7 @@
             "description": "The ID of the user to update",
             "required": true,
             "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "integer"
-            }
+            "explode": false
           }
         ],
         "requestBody": {
@@ -267,10 +252,7 @@
             "description": "The ID of the user to delete",
             "required": true,
             "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "integer"
-            }
+            "explode": false
           }
         ],
         "responses": {
